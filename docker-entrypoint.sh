@@ -191,6 +191,14 @@ EOPHP
 		if [ "$WORDPRESS_DEBUG" ]; then
 			set_config 'WP_DEBUG' 1 boolean
 		fi
+		
+		if [ "$REDIS_HOST" ]; then
+			sed -i 's/REDIS_HOST_HERE/$REDIS_HOST/' /usr/local/etc/php/conf.d/redis-session.ini
+		fi
+		
+		if [ "$REDIS_PASSWORD" ]; then
+			sed -i 's/REDIS_PASSWORD_HERE/$REDIS_PASSWORD/' /usr/local/etc/php/conf.d/redis-session.ini
+		fi
 
 		TERM=dumb php -- <<'EOPHP'
 <?php
