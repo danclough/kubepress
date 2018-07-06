@@ -1,6 +1,6 @@
 FROM wordpress:latest
 RUN pecl install redis && \
-  docker-php-ext-enable redis && \
+  docker-php-ext-enable redis
   
 # Set Redis session handling options in php conf.d
 RUN { \
